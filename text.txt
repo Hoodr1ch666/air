@@ -14,3 +14,78 @@
                class="title--m">M</span><span
                class="title--ax">AX</span>
             </h1>
+
+
+
+                <button class="choose-color__btn">
+            <img src="/img/air-small-blue.png" alt="">
+         </button>
+.audio__box {
+   color: #fff;
+   text-align: center;
+   padding-bottom: 30vh;
+}
+
+position: relative;
+
+.audio::before{
+   content: "";
+   background-image: url(../img/audio-bg.jpg);
+   background-repeat: no-repeat;
+   background-position: top center;
+   background-size: cover;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   z-index: -2;
+}
+.audio::after{
+   content: "";
+   position: absolute;
+   background-image: url(../img/sound.png);
+   background-repeat: no-repeat;
+   background-position: bottom center;
+   background-size: cover;
+   bottom: -350px;
+   height: 150vh;
+   width: 100%;
+   left: 0;
+   right: 0;
+   height: 100%;
+   z-index: -1;
+}
+
+
+const chooseColor = document.querySelectorAll('.choose__color-btn');
+const contentItem = document.querySelectorAll('.content-item');
+
+
+chooseColor.forEach(function (element) {
+   element.addEventListener('click', open)
+})
+
+function open(evt) {
+
+   const target = evt.currentTarget;
+   const button = target.dataset.button;
+   const contentActive = document.querySelectorAll(`.${button}`);
+
+      chooseColor.forEach(function (item) {
+         item.classList.remove('choose__color-btn--active')
+      })
+
+   target.classList.add('choose__color-btn--active')
+
+   contentItem.forEach(function (item) {
+      item.classList.remove('content-item__active')
+   });
+
+contentActive.forEach(function(item){
+   item.classList.add('content-item__active')
+})
+
+}
